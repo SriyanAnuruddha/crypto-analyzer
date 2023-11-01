@@ -21,6 +21,8 @@ def filterPostsByCoin(posts):
         "Chainlink(LINK)":[re.compile(r'(?i)Chainlink'),re.compile(r'(?i)\bChainlink\b'), re.compile(r'(?i)\b\$LINK\b')],
         "Aave(AAVE)":[re.compile(r'(?i)Aave'), re.compile(r'(?i)\bAAVE\b')],
         "Polygon(MATIC)":[re.compile(r'(?i)Polygon'),re.compile(r'(?i)\bPolygon\b') ,re.compile(r'(?i)\bMATIC\b')],
+        "Gas(GAS)":[re.compile(r'(?i)Gas'),re.compile(r'(?i)\bGas\b')],
+        
     }
 
     filtered_posts = []

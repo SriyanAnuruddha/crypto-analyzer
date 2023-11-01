@@ -36,7 +36,7 @@ def scraper(profile_urls):
     dotenv.load_dotenv()
 
     with sync_playwright() as p:
-        browser = p.chromium.launch(headless=False, slow_mo=50)
+        browser = p.firefox.launch(headless=False, slow_mo=50)
         page = browser.new_page()
         stealth_sync(page)  # to hide bot data
         page.set_default_timeout(60000)
@@ -65,10 +65,8 @@ def scraper(profile_urls):
 
         for url in profile_urls:
             page.goto(url)  # go to this page
-
             # wait until specific page is loaded
-            page.wait_for_selector('span.css-901oao.css-16my406.r-poiln3.r-bcqeeo.r-qvutc0')
-            
+            page.wait_for_selector('span.css-901oao.css-16my406.r-poiln3.r-bcqeeo.r-qvutc0')            
             tweets = set()
             filter_date = float(os.getenv('Last_Run_Time_Twitter')) # load last run time
             breakOuterLoop = False
@@ -87,10 +85,10 @@ def scraper(profile_urls):
                         if tweet_txt not in tweets:
                             tweet_data = {
                                 'post_txt': tweet_txt.replace('\n', ''),
-                                'retweet_count': convertToInt(post.query_selector('div[data-testid="retweet"]').text_content()),
                                 'like_count': convertToInt(post.query_selector('div[data-testid="like"]').text_content()),
                                 'reply_count': convertToInt(post.query_selector('div[data-testid="reply"]').text_content()),
                                 'view_count': convertToInt(post.query_selector('a[aria-label*="analytics"]').text_content()),
+                                'retweet_count': convertToInt(post.query_selector('div[data-testid="retweet"]').text_content()),                                                              
                                 'posted_time':unixTime
                             }
                             tweets.add(tweet_txt)
@@ -98,11 +96,9 @@ def scraper(profile_urls):
 
                 if breakOuterLoop: # if there is no new posts
                     break
-
                 page.mouse.wheel(0, 4000) #scroll page
-                time.sleep(5)
-                
-
+                # time.sleep(0)
+            print("done scraping:"+url)        
     return data  
         
 
@@ -135,6 +131,9 @@ urls=[
     'https://twitter.com/CryptoBoomNews',
     'https://twitter.com/CryptoNetWire',
     'https://twitter.com/CryptoClub06',
+    'https://twitter.com/cryptobull2020',
+    'https://twitter.com/cryptobull',
+    'https://twitter.com/Cryptobullmaker',
     'https://twitter.com/DocumentingBTC',
     'https://twitter.com/ethereum',
     'https://twitter.com/ForbesCrypto',
@@ -150,7 +149,8 @@ urls=[
     'https://twitter.com/100trillionUSD',
     'https://twitter.com/WuBlockchain',
     'https://twitter.com/whale_alert',
-   
+    'https://twitter.com/Neo_Blockchain',
+    'https://twitter.com/NEOnewstoday',
 ]
 
 query_posts=scraper(urls) 

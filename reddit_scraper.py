@@ -54,7 +54,7 @@ subreddits = ['CryptoMoonShots','altcoin','CryptoMarkets','crypto_currency','Coi
               'BitcoinBeginners','Bitcoin' ,'ethtrader','Ripple','ethereum','solana','Monero','Avax',
               'Crypto_Currency_News','CryptoCurrencyClassic','ethfinance','Arbitrum','CryptoCurrencyMoons',
               'XRP','SolanaLabs','0xPolygon','cosmosnetwork','cardano','CardanoTrading','litecoin','Chainlink',
-              'BNBinance',
+              'BNBinance','NEO',
              ]
 
 for subreddit in subreddits:
