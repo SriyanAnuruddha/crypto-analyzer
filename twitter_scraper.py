@@ -55,8 +55,8 @@ def scraper(profile_urls):
         # login
         page.goto('https://twitter.com/i/flow/login')
         page.wait_for_selector('h1[id="modal-header"]')
-        page.locator('input[autocomplete="username"]').fill('anuruddaSriyan')
         page.wait_for_selector('text=Next')
+        page.locator('input[autocomplete="username"]').fill('anuruddaSriyan')
         page.locator('text=Next').click()
         page.wait_for_selector('h1#modal-header')
         page.locator('input[name="password"]').click()
@@ -82,7 +82,7 @@ def scraper(profile_urls):
 
             # wait until specific page is loaded
             page.wait_for_selector(
-                'span.css-901oao.css-16my406.r-poiln3.r-bcqeeo.r-qvutc0')
+                'div[data-testid="tweetText"]')
             tweets = set()
             # load last run time
             filter_date = float(os.getenv('Last_Run_Time_Twitter'))
