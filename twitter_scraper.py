@@ -46,7 +46,7 @@ def route_intercept(route):
 def scraper(profile_urls):
     dotenv.load_dotenv()
     with sync_playwright() as p:
-        browser = p.firefox.launch(headless=False, slow_mo=500)
+        browser = p.firefox.launch(headless=False, slow_mo=100)
         page = browser.new_page()
         stealth_sync(page)  # to hide bot data
         page.set_default_timeout(60000)
@@ -56,11 +56,11 @@ def scraper(profile_urls):
         page.goto('https://twitter.com/i/flow/login')
         page.wait_for_selector('h1[id="modal-header"]')
         page.wait_for_selector('text=Next')
-        page.locator('input[autocomplete="username"]').fill('anuruddaSriyan')
+        page.locator('input[autocomplete="username"]').fill('elonfanboi1000')
         page.locator('text=Next').click()
-        page.wait_for_selector('h1#modal-header')
+        page.wait_for_selector('input[name="password"]')
         page.locator('input[name="password"]').click()
-        page.keyboard.type('niggasriyan123')
+        page.keyboard.type('Kluchking@2020')
         page.locator('div[data-testid="LoginForm_Login_Button"]').click()
         # wait untill home page is loaded
         page.wait_for_selector('a[aria-label="X"]')
