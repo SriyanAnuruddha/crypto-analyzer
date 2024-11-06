@@ -51,7 +51,7 @@
 
 3. Analyze data in **Jupyter Notebook** using the coded Pandas segments for processing and visualization:
     ```bash
-    jupyter notebook analysis.ipynb
+    jupyter notebook main.ipynb
     ```
 
 ## Technologies Used
